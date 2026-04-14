@@ -12,6 +12,7 @@
 #![cfg_attr(feature = "rustc", feature(rustc_private))]
 #![cfg_attr(feature = "simd", feature(portable_simd, unchecked_shifts))]
 #![warn(missing_docs, clippy::pedantic)]
+#![sniff_tool::check_unsafe_pub]
 
 use self::pointer::PointerFamily;
 use index_vec::Idx;
