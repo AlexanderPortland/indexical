@@ -52,14 +52,20 @@ where
     pub fn get<M>(&self, idx: impl ToIndex<K, M>) -> &V {
         let idx = idx.to_index(&self.domain);
         debug_assert!(self.domain.contains_index(idx));
-        unsafe { self.vec.get_unchecked(idx.index()) }
+        /// SAFETY: TODO (some domain specific reasoning about the index always being in bounds)
+        unsafe {
+            self.vec.get_unchecked(idx.index())
+        }
     }
 
     /// Returns a mutable reference to a value for a given index.
     pub fn get_mut<M>(&mut self, idx: impl ToIndex<K, M>) -> &mut V {
         let idx = idx.to_index(&self.domain);
         debug_assert!(self.domain.contains_index(idx));
-        unsafe { self.vec.get_unchecked_mut(idx.index()) }
+        /// SAFETY: TODO (some domain specific reasoning about the index always being in bounds)
+        unsafe {
+            self.vec.get_unchecked_mut(idx.index())
+        }
     }
 
     /// Returns an iterator over immutable references to the values.
