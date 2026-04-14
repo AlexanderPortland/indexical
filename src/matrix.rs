@@ -61,7 +61,7 @@ where
         self.ensure_row(from.clone());
         self.ensure_row(to.clone());
 
-        // SAFETY: `from` != `to` therefore this is a disjoint mutable borrow
+        /// SAFETY: `from` != `to` therefore this is a disjoint mutable borrow
         let [Some(from), Some(to)] =
             (unsafe { self.matrix.get_disjoint_unchecked_mut([&from, &to]) })
         else {
